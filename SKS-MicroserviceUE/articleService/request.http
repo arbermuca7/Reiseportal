@@ -1,0 +1,72 @@
+GET http://localhost:8080/resources/articles
+
+###
+
+GET http://localhost:8080/resources/articles/1
+
+###
+
+DELETE http://localhost:8080/resources/articles/1
+
+###
+
+POST http://localhost:8080/resources/articles
+Content-Type: application/json
+
+{
+  "title": "Hello Wiener!",
+  "text": "Es ist wunderschoen",
+  "publicationDate": "2021-01-01",
+  "category": {
+    "name": "Schoenbrunn"
+  },
+  "authors": [
+    {
+      "id": 1,
+      "sex": "MALE",
+      "firstName": "Markus",
+      "lastName": "Mustermann"
+    },
+    {
+      "sex": "FEMALE",
+      "firstName": "Tini",
+      "lastName": "Musterkind"
+    }
+  ]
+}
+
+###
+
+PUT http://localhost:8080/resources/articles/3
+Content-Type: application/json
+
+{
+  "id": 3,
+  "title": "Hello Wiener!",
+  "text": "Es gibt doch wunderschoen hier.",
+  "publicationDate": "2021-01-01",
+  "category": {
+    "id": 2,
+    "name": "Schoenbrunn"
+  },
+  "authors": [
+    {
+      "id": 1,
+      "sex": "MALE",
+      "firstName": "Markus",
+      "lastName": "Mustermann"
+    },
+    {
+      "id": 3,
+      "sex": "FEMALE",
+      "firstName": "Tini",
+      "lastName": "Musterkind"
+    }
+  ]
+}
+
+###
+
+DELETE http://localhost:8080/resources/articles/1
+
+###
