@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "t_articles")
+@Table(name = "t_blog_articles")
 @NamedEntityGraph(
         name = "Articles.fetchAttractionAuthors",
         attributeNodes = {
