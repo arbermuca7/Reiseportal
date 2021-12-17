@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/articleService/SKS-MicroserviceUE-articleService.iml" filepath="$PROJECT_DIR$/articleService/SKS-MicroserviceUE-articleService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cashoutService/SKS-MicroserviceUE-cashoutService.iml" filepath="$PROJECT_DIR$/cashoutService/SKS-MicroserviceUE-cashoutService.iml" />
     </modules>
   </component>
 </project>
