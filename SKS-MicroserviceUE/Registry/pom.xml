@@ -9,30 +9,18 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>at.technikumwien</groupId>
-    <artifactId>SKS-MicroserviceUE-cashoutService</artifactId>
+    <artifactId>SKS-MicroserviceUE-Registry</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SKS-MicroserviceUE-cashoutService</name>
+    <name>SKS-MicroserviceUE-Registry</name>
+    <description>SKS-MicroserviceUE-Registry</description>
     <properties>
         <java.version>11</java.version>
-        <start-class>at.technikumwien.aaa</start-class>
         <spring-cloud.version>2020.0.5</spring-cloud.version>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
 
         <dependency>
@@ -40,11 +28,6 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -55,12 +38,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>at.technikumwien</groupId>
-            <artifactId>SKS-MicroserviceUE-articleService</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
     <dependencyManagement>

@@ -5,6 +5,9 @@
       <list>
         <option value="$PROJECT_DIR$/articleService/pom.xml" />
         <option value="$PROJECT_DIR$/cashoutService/pom.xml" />
+        <option value="$PROJECT_DIR$/SKS-MicroserviceUE-statisticService/pom.xml" />
+        <option value="$PROJECT_DIR$/statisticService/pom.xml" />
+        <option value="$PROJECT_DIR$/Registry/pom.xml" />
       </list>
     </option>
   </component>

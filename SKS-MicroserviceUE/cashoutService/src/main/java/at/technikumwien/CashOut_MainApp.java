@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class CashOut_MainApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(CashOut_MainApp.class, args);
+        SpringApplication.run(aaa.class, args);
     }
 
 }

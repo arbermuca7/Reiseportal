@@ -7,25 +7,28 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Component
 @Log
 public class DBInitializer {
     @Autowired
-    private AuthorRepository authorRepository;
+   private AttractionRepository attractionRepository;
 
     @EventListener(ApplicationReadyEvent.class)
     @Transactional
     public void handleApplicationReady() {
         log.info("initialize database ...");
-        if (authorRepository.count() == 0) {
-            authorRepository.saveAll(List.of(
-                    new Author(Sex.FEMALE,"Aida","Omic"),
-                    new Author(Sex.MALE,"Arber","Muca"),
-                    new Author(Sex.FEMALE,"Sabrine","Nirgendwer"),
-                    new Author(Sex.MALE,"Norbert","Niemand")
+        if (attractionRepository.count() == 0) {
+            attractionRepository.saveAll(List.of(
+                    new Attraction("Stephansdom"),
+                    new Attraction("Schloss Schoenbrunn"),
+                    new Attraction("Wiener Prater"),
+                    new Attraction("Schloss Belvedere"),
+                    new Attraction("Hofburg"),
+                    new Attraction("Haus des Meeres"),
+                    new Attraction("Wiener Rathaus"),
+                    new Attraction("Museumsquartier")
             ));
         }
     }

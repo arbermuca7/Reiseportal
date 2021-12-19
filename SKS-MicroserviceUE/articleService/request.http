@@ -18,19 +18,19 @@ Content-Type: application/json
   "text": "Es ist wunderschoen",
   "publicationDate": "2021-01-01",
   "category": {
-    "name": "Schoenbrunn"
+    "name": "Hofburg"
   },
   "authors": [
     {
       "id": 1,
       "sex": "MALE",
-      "firstName": "Markus",
-      "lastName": "Mustermann"
+      "firstName": "Arber",
+      "lastName": "Muca"
     },
     {
       "sex": "FEMALE",
-      "firstName": "Tini",
-      "lastName": "Musterkind"
+      "firstName": "Norbert",
+      "lastName": "Niemand"
     }
   ]
 }
@@ -46,21 +46,21 @@ Content-Type: application/json
   "text": "Es gibt doch wunderschoen hier.",
   "publicationDate": "2021-01-01",
   "category": {
-    "id": 2,
-    "name": "Schoenbrunn"
+    "id": 5,
+    "name": "Hofburg"
   },
   "authors": [
     {
       "id": 1,
       "sex": "MALE",
-      "firstName": "Markus",
-      "lastName": "Mustermann"
+      "firstName": "Arber",
+      "lastName": "Muca"
     },
     {
-      "id": 3,
+      "id": 2,
       "sex": "FEMALE",
-      "firstName": "Tini",
-      "lastName": "Musterkind"
+      "firstName": "Norbert",
+      "lastName": "Niemand"
     }
   ]
 }
