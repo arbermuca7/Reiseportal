@@ -21,14 +21,14 @@ public class DBInitializer {
         log.info("initialize database ...");
         if (attractionRepository.count() == 0) {
             attractionRepository.saveAll(List.of(
-                    new Attraction("Stephansdom"),
-                    new Attraction("Schloss Schoenbrunn"),
-                    new Attraction("Wiener Prater"),
-                    new Attraction("Schloss Belvedere"),
-                    new Attraction("Hofburg"),
-                    new Attraction("Haus des Meeres"),
-                    new Attraction("Wiener Rathaus"),
-                    new Attraction("Museumsquartier")
+                    new Attraction("Stephansdom", 0),
+                    new Attraction("Schloss Schoenbrunn", 0),
+                    new Attraction("Wiener Prater", 0),
+                    new Attraction("Schloss Belvedere", 0),
+                    new Attraction("Hofburg", 0),
+                    new Attraction("Haus des Meeres", 0),
+                    new Attraction("Wiener Rathaus", 0),
+                    new Attraction("Museumsquartier", 0)
             ));
         }
     }

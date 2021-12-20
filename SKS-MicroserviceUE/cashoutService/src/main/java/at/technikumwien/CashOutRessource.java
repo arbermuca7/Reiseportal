@@ -2,24 +2,25 @@ package at.technikumwien;
 
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.event.EventListener;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.List;
+import java.util.TimeZone;
 
 @CrossOrigin
 @Log
-public class CashOutResource {
+public class CashOutRessource {
 
     @Autowired
-    private AuthorCashOutRepository authorCashOutRepository;
-    private List<Author> paymentList;
-    private Author author;
+    private CashOutRepository authorCashOutRepository;
+    private List<CashOutAuthor> paymentList;
+    private CashOutAuthor author;
 
     //es fehlen nur noch Events um das auszulösen
 
-    public void updatePayment(@PathVariable long id){
+    public void updatePayment(long id){
         log.info("Payment +1 >> id=" +id);
         author = authorCashOutRepository.findById(id)
                 .orElseThrow(

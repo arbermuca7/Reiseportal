@@ -11,8 +11,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "t_cashout_author")
-public class Author {
+@Table(name = "t_cashout")
+public class CashOutAuthor {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,7 +31,7 @@ public class Author {
     @Column(nullable = false, length = 10)
     private double payment;
 
-    public Author(Sex sex, String firstName, String lastName) {
+    public CashOutAuthor(Sex sex, String firstName, String lastName) {
         this(null, sex, firstName, lastName, 0.0);
     }
 }

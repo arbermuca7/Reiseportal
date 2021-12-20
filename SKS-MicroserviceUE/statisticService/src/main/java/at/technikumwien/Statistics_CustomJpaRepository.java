@@ -6,11 +6,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
-public class CashOut_CustomJpaRepository<T, ID> extends SimpleJpaRepository<T, ID> {
-
+public class Statistics_CustomJpaRepository<T, ID> extends SimpleJpaRepository<T, ID> {
     private final EntityManager em;
 
-    public CashOut_CustomJpaRepository(JpaEntityInformation<T, ?> entityInformation, EntityManager em) {
+    public Statistics_CustomJpaRepository(JpaEntityInformation<T, ?> entityInformation, EntityManager em) {
         super(entityInformation, em);
         this.em = em;
     }
@@ -20,5 +19,4 @@ public class CashOut_CustomJpaRepository<T, ID> extends SimpleJpaRepository<T, I
     public <S extends T> S save(S entity) {
         return em.merge(entity);
     }
-
 }

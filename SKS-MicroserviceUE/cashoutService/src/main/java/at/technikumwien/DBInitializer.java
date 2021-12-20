@@ -13,18 +13,18 @@ import java.util.List;
 @Log
 public class DBInitializer {
     @Autowired
-    private AuthorCashOutRepository authorCashOutRepository;
+    private CashOutRepository cashOutRepository;
 
     @EventListener(ApplicationReadyEvent.class)
     @Transactional
-    public void handleApplicationReady() {
-        log.info("initialize database ...");
-        if (authorCashOutRepository.count() == 0) {
-            authorCashOutRepository.saveAll(List.of(
-                    new Author(Sex.FEMALE,"Aida","Omic"),
-                    new Author(Sex.MALE,"Arber","Muca"),
-                    new Author(Sex.FEMALE,"Sabrine","Nirgendwer"),
-                    new Author(Sex.MALE,"Norbert","Niemand")
+    public void handleApplicationReady(){
+        log.info("starting");
+        if (cashOutRepository.count() == 0) {
+            cashOutRepository.saveAll(List.of(
+                    new CashOutAuthor(Sex.FEMALE,"Aida","Omic"),
+                    new CashOutAuthor(Sex.MALE,"Arber","Muca"),
+                    new CashOutAuthor(Sex.FEMALE,"Sabrine","Nirgendwer"),
+                    new CashOutAuthor(Sex.MALE,"Norbert","Niemand")
             ));
         }
     }

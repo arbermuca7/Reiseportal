@@ -2,5 +2,5 @@ package at.technikumwien;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AuthorCashOutRepository extends JpaRepository<Author, Long> {
+public interface CashOutRepository extends JpaRepository<CashOutAuthor, Long> {
 }

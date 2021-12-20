@@ -20,11 +20,11 @@ public class Attraction {
     @Column(nullable = false, length = 50)
     private String name;
 
-   /* @Column(nullable = false)
-    private int timesVisited;*/
+    @Column(nullable = false)
+    private int timesVisited;
 
-    public Attraction(String name) {
-        this(null, name);
+    public Attraction(String name, int timesVisited) {
+        this(null, name, timesVisited);
     }
 
 
