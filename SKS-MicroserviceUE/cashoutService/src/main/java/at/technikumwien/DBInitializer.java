@@ -7,21 +7,20 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Component
 @Log
 public class DBInitializer {
     @Autowired
-    private AuthorRepository authorRepository;
+    private AuthorCashOutRepository authorCashOutRepository;
 
     @EventListener(ApplicationReadyEvent.class)
     @Transactional
     public void handleApplicationReady() {
         log.info("initialize database ...");
-        if (authorRepository.count() == 0) {
-            authorRepository.saveAll(List.of(
+        if (authorCashOutRepository.count() == 0) {
+            authorCashOutRepository.saveAll(List.of(
                     new Author(Sex.FEMALE,"Aida","Omic"),
                     new Author(Sex.MALE,"Arber","Muca"),
                     new Author(Sex.FEMALE,"Sabrine","Nirgendwer"),

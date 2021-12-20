@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(repositoryBaseClass = CustomJpaRepository.class)
+@EnableJpaRepositories(repositoryBaseClass = CashOut_CustomJpaRepository.class)
 public class CashOut_MainApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(aaa.class, args);
+        SpringApplication.run(CashOut_MainApp.class, args);
     }
 
 }

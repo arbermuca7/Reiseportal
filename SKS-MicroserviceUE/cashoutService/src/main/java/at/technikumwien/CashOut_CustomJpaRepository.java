@@ -6,10 +6,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
-public class CustomJpaRepository<T, ID> extends SimpleJpaRepository<T, ID> {
+public class CashOut_CustomJpaRepository<T, ID> extends SimpleJpaRepository<T, ID> {
     private final EntityManager em;
 
-    public CustomJpaRepository(JpaEntityInformation<T, ?> entityInformation, EntityManager em) {
+    public CashOut_CustomJpaRepository(JpaEntityInformation<T, ?> entityInformation, EntityManager em) {
         super(entityInformation, em);
         this.em = em;
     }
