@@ -21,13 +21,13 @@ public class CashOutRessource {
     //es fehlen nur noch Events um das auszulösen
 
     public void updatePayment(long id){
-        log.info("Payment +1 >> id=" +id);
+        log.info("Payment +1Cent >> id=" +id);
         author = authorCashOutRepository.findById(id)
                 .orElseThrow(
                         () -> new EmptyResultDataAccessException("can't find news with id " + id, 1)
                 );
         author.setId(id);
-        author.setPayment(author.getPayment()+1);
+        author.setPayment(author.getPayment()+0.01);
         authorCashOutRepository.save(author);
     }
 

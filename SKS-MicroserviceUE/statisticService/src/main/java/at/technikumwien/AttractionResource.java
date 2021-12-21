@@ -22,7 +22,7 @@ public class AttractionResource {
     private int counter;
 
     //should actually be called by an Event
-    @GetMapping("/stats/{id}")
+    //@GetMapping("/stats/{id}")
     public void updatePayment(@PathVariable long id){
         log.info("Statistics +1 >> id=" +id);
         attraction = attractionRepository.findById(id)
@@ -37,14 +37,6 @@ public class AttractionResource {
     @GetMapping("/statistics")
     public List<Attraction> retrieveAll(){
         log.info("retrieveAll()");
-
-        //simulate problem on every third request
-        counter = (counter+1)%3;
-
-        if (counter == 0){
-            throw new RuntimeException("dummy");
-        }
-
         return attractionRepository.findAll();
     }
 
