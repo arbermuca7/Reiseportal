@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/Registry/pom.xml" />
         <option value="$PROJECT_DIR$/cashOutService2/pom.xml" />
         <option value="$PROJECT_DIR$/cashOutService/pom.xml" />
+        <option value="$PROJECT_DIR$/Gateway/pom.xml" />
       </list>
     </option>
   </component>

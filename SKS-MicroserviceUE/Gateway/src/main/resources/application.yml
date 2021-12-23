@@ -1,0 +1,62 @@
+server:
+  port: 5555
+
+spring:
+  application:
+    name: travelgateway
+
+  cloud:
+    gateway:
+      routes:
+      - id: articleroute
+        uri: lb://ARTICLESERVICE
+        predicates:
+          - Path=/api/article/**
+        filters:
+          - RewritePath=/api/article(?<segment>.*), $\{segment}
+          - name: Retry
+            args:
+              retries: 3
+              statutes: NOT_FOUND, INTERNAL_SERVER_ERROR
+              methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE
+      - id: statisticroute
+        uri: lb://STATISTICSERVICE
+        predicates:
+          - Path=/api/statistic/**
+        filters:
+          - RewritePath=/api/statistic(?<segment>.*), $\{segment}
+          - name: Retry
+            args:
+              retries: 3
+              statutes: NOT_FOUND, INTERNAL_SERVER_ERROR
+              methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE
+      - id: cashoutroute
+        uri: lb://CASHOUTSERVICE
+        predicates:
+          - Path=/api/cashout/**
+        filters:
+          - RewritePath=/api/cashout(?<segment>.*), $\{segment}
+          - name: Retry
+            args:
+              retries: 3
+              statutes: NOT_FOUND, INTERNAL_SERVER_ERROR
+              methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE
+      globalcors:
+        cors-configurations:
+          "[/**]":
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+eureka:
+  client:
+    register-with-eureka: false  # not to be seen as a service in the eureka website
+    registry-fetch-interval-seconds: 5
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+# create gateway actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway

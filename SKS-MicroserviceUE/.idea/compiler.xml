@@ -11,12 +11,14 @@
         <module name="SKS-MicroserviceUE-statisticService" />
         <module name="SKS-MicroserviceUE-articleService" />
         <module name="SKS-MicroserviceUE-cashOutService" />
+        <module name="SKS-MicroserviceUE-Gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="SKS-MicroserviceUE-articleService" target="11" />
       <module name="SKS-MicroserviceUE-cashoutService" target="11" />
       <module name="SKS-MicroserviceUE-cashOutService" target="11" />
+      <module name="SKS-MicroserviceUE-Gateway" target="11" />
       <module name="SKS-MicroserviceUE-Registry" target="11" />
       <module name="SKS-MicroserviceUE-statisticService" target="11" />
       <module name="statisticService" target="11" />
@@ -24,6 +26,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="SKS-MicroserviceUE-Gateway" options="-parameters" />
       <module name="SKS-MicroserviceUE-Registry" options="-parameters" />
       <module name="SKS-MicroserviceUE-articleService" options="-parameters" />
       <module name="SKS-MicroserviceUE-cashOutService" options="-parameters" />
