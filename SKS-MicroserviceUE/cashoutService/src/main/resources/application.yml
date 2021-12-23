@@ -1,5 +1,5 @@
 server:
-  port: 8080   # optional since default
+  port: 8081   # optional since default
 
 spring:
   datasource:
