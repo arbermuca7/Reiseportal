@@ -2,10 +2,15 @@ server:
   port: 8082   # optional since default
 
 spring:
+  application:
+    name:
+      statisticservice
+
   datasource:
-    url: jdbc:mysql://localhost:3306/db_travel
+    url: jdbc:mysql://localhost:3306/db_statistics
     username: root
     password: root
+
   jpa:
     generate-ddl: true
     hibernate:
@@ -14,8 +19,19 @@ spring:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
-  application:
-    name: statisticservice
+
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        input:
+          destination: travel.articles
+          content-type: application/json
+          group: travel.articles.group2
+        consumer:
+          concurrency: 3
 
 eureka:
   client:

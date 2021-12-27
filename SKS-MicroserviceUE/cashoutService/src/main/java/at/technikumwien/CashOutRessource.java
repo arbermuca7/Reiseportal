@@ -2,7 +2,10 @@ package at.technikumwien;
 
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.Calendar;
@@ -16,12 +19,15 @@ public class CashOutRessource {
     @Autowired
     private CashOutRepository authorCashOutRepository;
     private List<CashOutAuthor> paymentList;
+    @Autowired
     private CashOutAuthor author;
 
-    //es fehlen nur noch Events um das auszulösen
-
     public void updatePayment(long id){
-        log.info("Payment +1Cent >> id=" +id);
+
+        System.out.println(authorCashOutRepository.findAll());
+
+        log.info("Payment +1Cent >> id=" + id);
+
         author = authorCashOutRepository.findById(id)
                 .orElseThrow(
                         () -> new EmptyResultDataAccessException("can't find news with id " + id, 1)

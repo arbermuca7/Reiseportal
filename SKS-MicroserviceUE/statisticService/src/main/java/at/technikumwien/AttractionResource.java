@@ -2,7 +2,10 @@ package at.technikumwien;
 
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,11 +22,7 @@ public class AttractionResource {
     private AttractionRepository attractionRepository;
     private Attraction attraction;
 
-    private int counter;
-
-    //should actually be called by an Event
-    //@GetMapping("/stats/{id}")
-    public void updatePayment(@PathVariable long id){
+    public void updateStatistics(long id){
         log.info("Statistics +1 >> id=" +id);
         attraction = attractionRepository.findById(id)
                 .orElseThrow(

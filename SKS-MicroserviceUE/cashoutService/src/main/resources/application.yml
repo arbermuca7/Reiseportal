@@ -1,11 +1,15 @@
 server:
-  port: 8081   # optional since default
+  port: 8089   # optional since default
 
 spring:
+  application:
+    name: cashoutservice
+
   datasource:
-    url: jdbc:mysql://localhost:3306/db_travel
+    url: jdbc:mysql://localhost:3306/db_cashout
     username: root
     password: root
+
   jpa:
     generate-ddl: true
     hibernate:
@@ -14,8 +18,19 @@ spring:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
-  application:
-    name: cashoutservice
+
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        input:
+          destination: travel.articles
+          content-type: application/json
+          group: travel.articles.group1
+        consumer:
+          concurrency: 3
 
 eureka:
   client:

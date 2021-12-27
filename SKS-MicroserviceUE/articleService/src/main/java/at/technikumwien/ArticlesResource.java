@@ -11,6 +11,7 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -24,6 +25,7 @@ public class ArticlesResource {
     private Source source;
 
     private Articles article;
+    private ArrayList authorIds = new ArrayList();
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody Articles article) {
@@ -42,6 +44,7 @@ public class ArticlesResource {
     @GetMapping("/{id}")
     public Articles retrieve(@PathVariable long id) {
         log.info("retrieve() >> id=" + id);
+        authorIds = new ArrayList();
 
         article = articleRepository.findById(id)
                 .orElseThrow(
@@ -49,7 +52,11 @@ public class ArticlesResource {
                 );
 
         //Kafka Event
-        sendArticleEvent(ArticlesEvent.forAccessed(article));
+        for (int i = 0; i < article.getAuthors().size(); i++){
+            authorIds.add(1);
+        }
+
+        sendEvent(ArticlesEvent.forAccessed(authorIds, article.getAttraction().getId()));
 
         return article;
     }
@@ -65,12 +72,7 @@ public class ArticlesResource {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable long id) {
         log.info("delete() >> id=" + id);
-
-        article = articleRepository.getById(id);
-
         articleRepository.deleteById(id);   // throw EmptyResultDataAccessException if article could not be found
-
-        sendArticleEvent(ArticlesEvent.forDeleted(article));
     }
 
     @GetMapping
@@ -79,15 +81,11 @@ public class ArticlesResource {
         return articleRepository.findAll();
     }
 
-
-    private void sendArticleEvent(ArticlesEvent event){
-        //aufbau der Message
+    public void sendEvent(ArticlesEvent event){
         Message<ArticlesEvent> message = MessageBuilder
                 .withPayload(event).build();
-        //senden der Message über Source-Kanal
-            source
-                    .output()
-                    .send(message);
+        source
+                .output()
+                .send(message);
     }
-
 }

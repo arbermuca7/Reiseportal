@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/db_travel
+    url: jdbc:mysql://localhost:3306/db_article
     username: root
-    password: if20b204
+    password: root
   jpa:
     generate-ddl: true
     hibernate:
