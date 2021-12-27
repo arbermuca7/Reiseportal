@@ -3,6 +3,7 @@ package at.technikumwien;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.TimeZone;
 
 @CrossOrigin
+@Component
 @Log
 public class CashOutRessource {
 
@@ -22,7 +24,7 @@ public class CashOutRessource {
 
     private List<CashOutAuthor> paymentList;
 
-    public void updatePayment(@PathVariable long id){
+    public void updatePayment(long id){
 
         log.info("Payment +1Cent >> id=" + id);
         //ID wird zwar übergeben aber der nächste Befehl funktioniert nicht

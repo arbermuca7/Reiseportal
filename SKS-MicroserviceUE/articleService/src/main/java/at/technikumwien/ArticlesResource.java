@@ -53,7 +53,8 @@ public class ArticlesResource {
 
         //Kafka Event
         for (int i = 0; i < article.getAuthors().size(); i++){
-            authorIds.add(1);
+            System.out.println(article.getAuthors().get(i).getId());
+            authorIds.add(article.getAuthors().get(i).getId());
         }
 
         sendEvent(ArticlesEvent.forAccessed(authorIds, article.getAttraction().getId()));

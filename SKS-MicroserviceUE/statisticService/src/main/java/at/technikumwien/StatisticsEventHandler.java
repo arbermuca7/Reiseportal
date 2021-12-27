@@ -17,6 +17,7 @@ public class StatisticsEventHandler {
     public void handleEvent(StatisticsEvent event){
         switch(event.getEventType()){
             case ACCESSED:
+                log.info("Event for Statistics-Update triggered");
                 attractionResource.updateStatistics(event.getAttractionId());
         }
     }
