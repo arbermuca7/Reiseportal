@@ -2,11 +2,11 @@ package at.technikumwien;
 
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Calendar;
 import java.util.List;
@@ -18,16 +18,14 @@ public class CashOutRessource {
 
     @Autowired
     private CashOutRepository authorCashOutRepository;
-    private List<CashOutAuthor> paymentList;
-    @Autowired
     private CashOutAuthor author;
 
-    public void updatePayment(long id){
+    private List<CashOutAuthor> paymentList;
 
-        System.out.println(authorCashOutRepository.findAll());
+    public void updatePayment(@PathVariable long id){
 
         log.info("Payment +1Cent >> id=" + id);
-
+        //ID wird zwar übergeben aber der nächste Befehl funktioniert nicht
         author = authorCashOutRepository.findById(id)
                 .orElseThrow(
                         () -> new EmptyResultDataAccessException("can't find news with id " + id, 1)

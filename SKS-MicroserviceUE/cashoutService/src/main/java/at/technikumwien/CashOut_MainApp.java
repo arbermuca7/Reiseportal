@@ -13,7 +13,6 @@ public class CashOut_MainApp {
 
     public static void main(String[] args) {
         SpringApplication.run(CashOut_MainApp.class, args);
-        new CashOutRessource().updatePayment(1);
     }
 
 }

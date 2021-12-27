@@ -14,8 +14,6 @@ public class CashoutEventHandler {
         switch (event.getEventType()){
             case ACCESSED:
                 log.info("Event for Payment-Update triggered");
-                System.out.println("LÄNGE "+event.getAuthorIds().size());
-                    System.out.println("ID"+(int) event.getAuthorIds().get(0));
                     new CashOutRessource().updatePayment((int)event.getAuthorIds().get(0));
                 //}
                 break;
