@@ -10,8 +10,8 @@
         <module name="SKS-MicroserviceUE-Registry" />
         <module name="SKS-MicroserviceUE-statisticService" />
         <module name="SKS-MicroserviceUE-articleService" />
-        <module name="SKS-MicroserviceUE-cashOutService" />
         <module name="SKS-MicroserviceUE-Gateway" />
+        <module name="SKS-MicroserviceUE-cashOutService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

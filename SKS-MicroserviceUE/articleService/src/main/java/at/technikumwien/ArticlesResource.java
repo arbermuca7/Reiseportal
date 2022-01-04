@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/resources/articles")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:8081")
 @Log
 public class ArticlesResource {
     @Autowired
@@ -26,6 +26,8 @@ public class ArticlesResource {
 
     private Articles article;
     private ArrayList authorIds = new ArrayList();
+    private List<Articles> articles;
+    private ArrayList articleTitles = new ArrayList();
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody Articles article) {
@@ -77,9 +79,14 @@ public class ArticlesResource {
     }
 
     @GetMapping
-    public List<Articles> retrieveAll() {
+    public ArrayList retrieveAll() {
         log.info("retrieveAll()");
-        return articleRepository.findAll();
+        articles = articleRepository.findAll();
+        articleTitles.clear();
+        for(int i = 0; i < articles.size(); i++){
+            articleTitles.add(articles.get(i).getTitle());
+        }
+        return articleTitles;
     }
 
     public void sendEvent(ArticlesEvent event){

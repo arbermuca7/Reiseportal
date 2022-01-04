@@ -28,8 +28,7 @@ public class DBInitializer {
                         LocalDate.of(2021, 1, 1),
                         new Attraction("Stephansdom"),
                         List.of(
-                                new Author(Sex.MALE, "Markus", "Mustermann"),
-                                new Author(Sex.FEMALE, "Martina", "Musterfrau")
+                                new Author(Sex.MALE, "Markus", "Mustermann")
                         )
                 )
         );
@@ -42,7 +41,9 @@ public class DBInitializer {
                         "Unser neues Article-Portal für Stephansdom ist online.",
                         LocalDate.of(2021, 1, 2),
                         new Attraction(attraction.getId(), attraction.getName()),
-                        null
+                        List.of(
+                                new Author(Sex.FEMALE, "Martina", "Musterfrau")
+                        )
                 )
         );
     }

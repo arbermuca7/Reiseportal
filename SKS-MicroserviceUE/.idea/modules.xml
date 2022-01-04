@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Gateway/SKS-MicroserviceUE-Gateway.iml" filepath="$PROJECT_DIR$/Gateway/SKS-MicroserviceUE-Gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/Registry/SKS-MicroserviceUE-Registry.iml" filepath="$PROJECT_DIR$/Registry/SKS-MicroserviceUE-Registry.iml" />
       <module fileurl="file://$PROJECT_DIR$/articleService/SKS-MicroserviceUE-articleService.iml" filepath="$PROJECT_DIR$/articleService/SKS-MicroserviceUE-articleService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cashOutService/SKS-MicroserviceUE-cashOutService.iml" filepath="$PROJECT_DIR$/cashOutService/SKS-MicroserviceUE-cashOutService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cashoutService/SKS-MicroserviceUE-cashOutService.iml" filepath="$PROJECT_DIR$/cashoutService/SKS-MicroserviceUE-cashOutService.iml" />
       <module fileurl="file://$PROJECT_DIR$/statisticService/SKS-MicroserviceUE-statisticService.iml" filepath="$PROJECT_DIR$/statisticService/SKS-MicroserviceUE-statisticService.iml" />
     </modules>
   </component>

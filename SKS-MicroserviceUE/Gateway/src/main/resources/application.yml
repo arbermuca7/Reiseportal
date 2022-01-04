@@ -43,10 +43,12 @@ spring:
               methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE
       globalcors:
         cors-configurations:
-          "[/**]":
+          "[*/*]":
             allowedOrigins: "*"
             allowedHeaders: "*"
-            allowedMethods: "*"
+            allowedMethods:
+              - GET
+              - POST
 eureka:
   client:
     register-with-eureka: false  # not to be seen as a service in the eureka website
