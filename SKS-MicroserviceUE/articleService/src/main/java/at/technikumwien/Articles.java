@@ -36,11 +36,6 @@ public class Articles {
     @Column(nullable = false)
     private LocalDate publicationDate;
 
-    /*
-    @Column(nullable = false)
-    private int timesRead;
-    */
-
     @ManyToOne(cascade = CascadeType.MERGE)   // EAGER
     @JoinColumn(name = "attractionid")
     private Attraction attraction;

@@ -21,10 +21,11 @@ public class DBInitializer {
         log.info("starting");
         if (cashOutRepository.count() == 0) {
             cashOutRepository.saveAll(List.of(
+                    new CashOutAuthor(Sex.MALE,"Norbert","Niemand"),
                     new CashOutAuthor(Sex.FEMALE,"Aida","Omic"),
                     new CashOutAuthor(Sex.MALE,"Arber","Muca"),
-                    new CashOutAuthor(Sex.FEMALE,"Sabrine","Nirgendwer"),
-                    new CashOutAuthor(Sex.MALE,"Norbert","Niemand")
+                    new CashOutAuthor(Sex.FEMALE,"Sabrine","Nirgendwer")
+
             ));
         }
     }

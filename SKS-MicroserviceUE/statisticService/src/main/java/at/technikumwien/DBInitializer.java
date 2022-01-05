@@ -24,11 +24,7 @@ public class DBInitializer {
                     new Attraction("Stephansdom", 0),
                     new Attraction("Schloss Schoenbrunn", 0),
                     new Attraction("Wiener Prater", 0),
-                    new Attraction("Schloss Belvedere", 0),
-                    new Attraction("Hofburg", 0),
-                    new Attraction("Haus des Meeres", 0),
-                    new Attraction("Wiener Rathaus", 0),
-                    new Attraction("Museumsquartier", 0)
+                    new Attraction("Schloss Belvedere", 0)
             ));
         }
     }

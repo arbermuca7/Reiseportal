@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
@@ -16,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/resources/articles")
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8080")
 @Log
 public class ArticlesResource {
     @Autowired
@@ -31,7 +33,7 @@ public class ArticlesResource {
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody Articles article) {
-        log.info("create() >> news=" + article);
+        log.info("create() >> article=" + article);
 
         article.setId(null);   // better safe than sorry
         article = articleRepository.save(article);
@@ -39,6 +41,7 @@ public class ArticlesResource {
         URI location = WebMvcLinkBuilder.linkTo(
                 WebMvcLinkBuilder.methodOn(getClass()).retrieve(article.getId())
         ).toUri();
+
 
         return ResponseEntity.created(location).build();
     }
@@ -62,20 +65,6 @@ public class ArticlesResource {
         sendEvent(ArticlesEvent.forAccessed(authorIds, article.getAttraction().getId()));
 
         return article;
-    }
-
-    @PutMapping("/{id}")
-    public void update(@PathVariable long id, @RequestBody Articles article) {
-        log.info("update() >> id=" + id + ", article=" + article);
-
-        article.setId(id);   // better safe than sorry
-        articleRepository.save(article);
-    }
-
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable long id) {
-        log.info("delete() >> id=" + id);
-        articleRepository.deleteById(id);   // throw EmptyResultDataAccessException if article could not be found
     }
 
     @GetMapping

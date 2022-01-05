@@ -1,9 +1,10 @@
 server:
-  port: 8080   # optional since default
+  port: 8083  # optional since default
 
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/db_article
+    #change to your systems credentials
     username: root
     password: if20b204
   jpa:

@@ -30,25 +30,12 @@ spring:
               retries: 3
               statutes: NOT_FOUND, INTERNAL_SERVER_ERROR
               methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE
-      - id: cashoutroute
-        uri: lb://CASHOUTSERVICE
-        predicates:
-          - Path=/api/cashout/**
-        filters:
-          - RewritePath=/api/cashout(?<segment>.*), $\{segment}
-          - name: Retry
-            args:
-              retries: 3
-              statutes: NOT_FOUND, INTERNAL_SERVER_ERROR
-              methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE
       globalcors:
         cors-configurations:
           "[*/*]":
             allowedOrigins: "*"
             allowedHeaders: "*"
-            allowedMethods:
-              - GET
-              - POST
+            allowedMethods: "*"
 eureka:
   client:
     register-with-eureka: false  # not to be seen as a service in the eureka website
