@@ -32,7 +32,7 @@ spring:
               methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE
       globalcors:
         cors-configurations:
-          "[*/*]":
+          "[/**]":
             allowedOrigins: "*"
             allowedHeaders: "*"
             allowedMethods: "*"

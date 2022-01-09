@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/resources/articles")
-@CrossOrigin(origins = "http://localhost:8080")
+//@CrossOrigin(origins = "http://localhost:8080")
 @Log
 public class ArticlesResource {
     @Autowired
@@ -58,7 +58,6 @@ public class ArticlesResource {
 
         //Kafka Event
         for (int i = 0; i < article.getAuthors().size(); i++){
-            System.out.println(article.getAuthors().get(i).getId());
             authorIds.add(article.getAuthors().get(i).getId());
         }
 

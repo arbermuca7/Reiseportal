@@ -5,14 +5,23 @@
     <form>
       <p>Title: <input type="text" v-model="title"/></p>
 
-      <p>Author:
-        <select v-model="author">
-          <option>Norbert Niemand</option>
-          <option>Aida Omic</option>
-          <option>Arber Muca</option>
-          <option>Sabrine Nirgendwer</option>
-        </select>
-      </p>
+      <p>Authors:</p>
+        <p style="margin-left: 30px">
+          <input type="checkbox" id="a1" value="Norbert Niemand" v-model="author">
+          <label style="margin-left: 5px" for="a1">Norbert Niemand</label>
+        </p>
+        <p style="margin-left: 30px">
+          <input type="checkbox" id="a2" value="Aida Omic" v-model="author">
+          <label style="margin-left: 5px"  for="a2">Aida Omic</label>
+        </p>
+        <p style="margin-left: 30px">
+          <input type="checkbox" id="a3" value="Arber Muca" v-model="author">
+          <label style="margin-left: 5px"  for="a3">Arber Muca</label>
+        </p>
+        <p style="margin-left: 30px">
+          <input type="checkbox" id="a4" value="Sabrine Nirgendwer" v-model="author">
+          <label style="margin-left: 5px"  for="a4">Sabrine Nirgendwer</label>
+        </p>
 
       <p>Attraction:
        <select v-model="attraction">
@@ -32,11 +41,6 @@
 
 <script>
 import axios from 'axios'
-/*let authorid;
-let attractionid;
-let sex;
-let date;*/
-
 
 export default {
   name: "ArtikelSchreiben",
@@ -44,73 +48,81 @@ export default {
     return {
       title: '',
       attraction: '',
-      author: '',
+      author: [],
       text: ''
     }
   },
   methods:{
-    sendRequest(){
-      //Logik fürs zusammenfügen des Artikels
-     /* switch (aut){
-        case 'Norbert Niemand':
-          authorid = 1;
-          sex = "MALE";
-          break;
-        case 'Aida Omic':
-          authorid = 2;
-          sex = "FEMALE";
-          break;
-        case 'Arber Muca':
-          authorid = 3;
-          sex = "MALE";
-          break;
-        case 'Sabrine Nirgendwer':
-          authorid = 4;
-          sex = "MALE"
-          break;
+    sendRequest() {
+      let authorList = [];
+      //authorList.length=0;
+      if (this.author.includes('Norbert Niemand')) {
+        authorList.push({
+          id: 1,
+          sex: "MALE",
+          firstName: "Norebert",
+          lastName: "Niemand",
+          payment: 0
+        });
+      }if (this.author.includes('Aida Omic')) {
+        authorList.push({
+          id: 2,
+          sex: "FEMALE",
+          firstName: "Aida",
+          lastName: "Omic",
+          payment: 0
+        });
+      }if (this.author.includes('Arber Muca')) {
+        authorList.push({
+          id: 3,
+          sex: "MALE",
+          firstName: "Arber",
+          lastName: "Muca",
+          payment: 0
+        });
+      }if(this.author.includes('Sabrine Nirgendwer')){
+        authorList.push({
+        id: 4,
+        sex: "FEMALE",
+        firstName: "Sabrine",
+        lastName: "Nirgendwer",
+        payment: 0
+        });
       }
 
-      switch (att){
+      switch (this.attraction){
         case 'Stephansdom':
-          attractionid = 1;
+          this.attractionid = 1;
           break;
         case 'Schloss Schoenbrunn':
-          attractionid = 2;
+          this.attractionid = 2;
           break;
         case 'Wiener Prater':
-          attractionid = 3;
+          this.attractionid = 3;
           break;
         case 'Schloss Belvedere':
-          attractionid = 4;
+          this.attractionid = 4;
           break;
       }
 
-      date = new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate();
-*/
+      this.date = new Date();
+      var dd = String(this.date.getDate()).padStart(2, '0');
+      var mm = String(this.date.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = this.date.getFullYear();
 
-      //Test mit angegebenen Werten um den Aufruf zu vereinfachen
-      //Dieser Aufruf funktioniert nicht
+      this.date = yyyy + '-' + mm + '-' + dd;
+
       axios.post("http://localhost:5555/api/article/resources/articles",{
-      id: 4,
-          title: "Mein erster Titel",
-          text: "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
-          publicationDate: "2022-01-04",
+          id: "0", //sowieso auto increment
+          title: this.title,
+          text: this.text,
+          publicationDate: this.date,
           attraction: {
-            id: 4,
-            name: "Schloss Belvedere"
+            id: this.attractionid,
+            name: this.attraction
           },
-          author: [ {
-            id: 2,
-            sex: "FEMALE",
-            firstName: "Martina",
-            lastName: "Musterfrau",
-            payment: 0
-          }]
+          authors: authorList
       })
-          .then((response) => {
-            console.log(response.data)
-            //this.articles = response.data
-          })
           .catch(error => console.log(error));
       this.$root.$emit( 'comp', 'alleArtikel');
     }

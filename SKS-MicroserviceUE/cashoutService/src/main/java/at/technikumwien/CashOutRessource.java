@@ -37,6 +37,7 @@ public class CashOutRessource {
         author.setId(id);
         author.setPayment(author.getPayment()+0.01);
         authorCashOutRepository.save(author);
+
     }
 
     //0:00 jeden Tag

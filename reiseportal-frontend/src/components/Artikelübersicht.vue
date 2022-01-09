@@ -35,7 +35,7 @@ export default {
       this.$root.$emit( 'artikelId', id+1);
     }
   },
-  beforeMount() {
+  mounted() {
     sendRequest()
   }
 }
