@@ -18,7 +18,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/resources/articles")
-//@CrossOrigin(origins = "http://localhost:8080")
 @Log
 public class ArticlesResource {
     @Autowired

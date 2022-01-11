@@ -7,15 +7,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 
-@CrossOrigin
 @EnableScheduling
 @Component
 @Log
@@ -45,7 +41,6 @@ public class CashOutRessource {
     public void cashOut(){
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Vienna"));
         if(calendar.get(Calendar.DAY_OF_MONTH) == Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH)){
-            //update datenbank
             log.info("CashOut for this Month");
             paymentList = authorCashOutRepository.findAll();
 

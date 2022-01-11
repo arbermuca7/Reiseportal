@@ -33,11 +33,6 @@ export default {
         .then((response) => {
           if(response != null){
             this.statistik = response.data
-            /*this.statistik.length=0
-            for (var i = 0; i < response.data.length; i++){
-              this.statistik.push(response.data[i])
-            }*/
-            console.log(this.statistik)
           }
         })
         .catch(error => console.log(error));

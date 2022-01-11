@@ -14,13 +14,4 @@ public class Gateway_MainApp {
     public static void main(String[] args) {
         SpringApplication.run(Gateway_MainApp.class, args);
     }
-
-    /*@Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/article/**").allowedHeaders("Access-Control-Allow-Origin: *");
-            }
-        };
-    }*/
 }

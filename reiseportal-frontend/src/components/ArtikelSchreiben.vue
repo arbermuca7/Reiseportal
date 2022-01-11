@@ -107,9 +107,8 @@ export default {
 
       this.date = new Date();
       var dd = String(this.date.getDate()).padStart(2, '0');
-      var mm = String(this.date.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var mm = String(this.date.getMonth() + 1).padStart(2, '0');
       var yyyy = this.date.getFullYear();
-
       this.date = yyyy + '-' + mm + '-' + dd;
 
       axios.post("http://localhost:5555/api/article/resources/articles",{
@@ -124,6 +123,7 @@ export default {
           authors: authorList
       })
           .catch(error => console.log(error));
+
       this.$root.$emit( 'comp', 'alleArtikel');
     }
   }
