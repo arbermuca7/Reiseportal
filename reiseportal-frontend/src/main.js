@@ -4,6 +4,7 @@ import axios from "axios";
 
 Vue.config.productionTip = false
 axios.defaults.headers.common['Accept'] = '*';
+
 new Vue({
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div style="text-align: center">
   <br>
   <h1 style="display: inline; padding-right: 20px; font-size: 40px; font-weight: bold">{{article.title}}</h1>
   <p style="font-size: 10px; display: inline">Erstellt am {{article.publicationDate}}</p>

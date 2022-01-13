@@ -1,34 +1,19 @@
 <template>
   <div>
     <h1>Artikel schreiben</h1>
+    <h4 style="color: darkred">{{message}}</h4>
     <p>Bitte füllen Sie alle folgenden Felder aus!</p>
     <form>
       <p>Title: <input type="text" v-model="title"/></p>
 
       <p>Authors:</p>
-        <p style="margin-left: 30px">
-          <input type="checkbox" id="a1" value="Norbert Niemand" v-model="author">
-          <label style="margin-left: 5px" for="a1">Norbert Niemand</label>
-        </p>
-        <p style="margin-left: 30px">
-          <input type="checkbox" id="a2" value="Aida Omic" v-model="author">
-          <label style="margin-left: 5px"  for="a2">Aida Omic</label>
-        </p>
-        <p style="margin-left: 30px">
-          <input type="checkbox" id="a3" value="Arber Muca" v-model="author">
-          <label style="margin-left: 5px"  for="a3">Arber Muca</label>
-        </p>
-        <p style="margin-left: 30px">
-          <input type="checkbox" id="a4" value="Sabrine Nirgendwer" v-model="author">
-          <label style="margin-left: 5px"  for="a4">Sabrine Nirgendwer</label>
-        </p>
-
+      <p v-for="(auth) in authorsList" v-bind:key="auth.id" style="margin-left: 30px">
+        <input type="checkbox" :value="auth.id" v-model="author">
+        <label style="margin-left: 5px" >{{auth.firstName}} {{auth.lastName}}</label>
+      </p>
       <p>Attraction:
        <select v-model="attraction">
-          <option>Stephansdom</option>
-          <option>Schloss Schoenbrunn</option>
-          <option>Wiener Prater</option>
-          <option>Schloss Belverdere</option>
+          <option  v-for="(attr) in attractionsList" v-bind:key="attr.id">{{attr.name}}</option>
         </select>
       </p>
 
@@ -48,61 +33,64 @@ export default {
     return {
       title: '',
       attraction: '',
+      authorsList: [],
+      attractionsList: [],
+      chosenAuthors: [],
       author: [],
-      text: ''
+      text: '',
+      message:''
     }
+  },
+  mounted() {
+    axios.get("http://localhost:5555/api/article/resources/authors")
+        .then((response) => {
+          this.authorsList = response.data;
+        })
+        .catch(error => console.log(error));
+
+    axios.get("http://localhost:5555/api/article/resources/attractions")
+        .then((response) => {
+          this.attractionsList = response.data;
+        })
+
+        .catch(error => console.log(error));
   },
   methods:{
     sendRequest() {
-      let authorList = [];
-      //authorList.length=0;
-      if (this.author.includes('Norbert Niemand')) {
-        authorList.push({
-          id: 1,
-          sex: "MALE",
-          firstName: "Norebert",
-          lastName: "Niemand",
-          payment: 0
-        });
-      }if (this.author.includes('Aida Omic')) {
-        authorList.push({
-          id: 2,
-          sex: "FEMALE",
-          firstName: "Aida",
-          lastName: "Omic",
-          payment: 0
-        });
-      }if (this.author.includes('Arber Muca')) {
-        authorList.push({
-          id: 3,
-          sex: "MALE",
-          firstName: "Arber",
-          lastName: "Muca",
-          payment: 0
-        });
-      }if(this.author.includes('Sabrine Nirgendwer')){
-        authorList.push({
-        id: 4,
-        sex: "FEMALE",
-        firstName: "Sabrine",
-        lastName: "Nirgendwer",
-        payment: 0
-        });
+      this.chosenAuthors.length=0;
+
+      if(this.author.length===0){
+        console.log(this.author)
+        this.message = 'Sie haben keine Autoren gewählt!';
+        this.$root.$emit( 'comp', 'schreiben');
+        return;
+      }
+      if(this.attraction === ''){
+        this.message = 'Sie haben keine Sehenswürdigkeit gewählt!';
+        this.$root.$emit( 'comp', 'schreiben');
+        return;
+      }
+      if(this.text === ''){
+        this.message = 'Geben Sie einen Text ein!';
+        this.$root.$emit( 'comp', 'schreiben');
+        return;
+      }
+      if(this.title === ''){
+        this.message = 'Geben Sie einen Titel ein';
+        this.$root.$emit( 'comp', 'schreiben');
+        return;
       }
 
-      switch (this.attraction){
-        case 'Stephansdom':
-          this.attractionid = 1;
-          break;
-        case 'Schloss Schoenbrunn':
-          this.attractionid = 2;
-          break;
-        case 'Wiener Prater':
-          this.attractionid = 3;
-          break;
-        case 'Schloss Belvedere':
-          this.attractionid = 4;
-          break;
+
+      for(let i = 0; i < this.author.length; i++){
+        this.chosenAuthors.push(this.authorsList[this.author[i]-1])
+      }
+
+      for (let a = 0; a < this.attractionsList; a++){
+        console.log(this.attractionsList[a].name)
+        console.log(this.attraction)
+        if (this.attractionsList[a].name === this.attraction)
+          this.attractionid = this.attractionsList[a].id;
       }
 
       this.date = new Date();
@@ -120,9 +108,8 @@ export default {
             id: this.attractionid,
             name: this.attraction
           },
-          authors: authorList
-      })
-          .catch(error => console.log(error));
+          authors: this.chosenAuthors
+      }).catch(error => console.log(error));
 
       this.$root.$emit( 'comp', 'alleArtikel');
     }

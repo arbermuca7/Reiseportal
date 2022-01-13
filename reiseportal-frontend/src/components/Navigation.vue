@@ -1,12 +1,13 @@
 <template>
   <div class="Start">
     <h1>Reiseportal</h1>
+
     <nav style="margin-bottom: 20px; margin-top: 20px">
       <button style="background-color: #ff9d93" @click="currentComponent='alleArtikel'">Artikelübersicht</button>
       <button style="background-color: #ffffff" @click="currentComponent='schreiben'">Artikel verfassen</button>
       <button style="background-color: #ff9d93" @click="currentComponent='stats'">Statistik</button>
     </nav>
-    <component :id=artikelId v-bind:is="currentComponent"></component>
+    <component style="alignment: right" :id=artikelId v-bind:is="currentComponent"></component>
   </div>
 
 </template>
